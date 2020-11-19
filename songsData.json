@@ -1,0 +1,56 @@
+[{
+    "id": 1,
+    "title": "AYA",
+    "artist": "Shyn",
+    "upVotes": 0,
+    "downVotes": 0,
+    "isFavorite": false,
+    "lyrics": "",
+    "style": "Reggae",
+    "price": 1000
+
+},
+{
+    "id": 2,
+    "title": "400 Volt",
+    "artist": "Wawa",
+    "upVotes": 0,
+    "downVotes": 0,
+    "isFavorite": false,
+    "lyrics": "",
+    "style": "Salegy",
+    "price": 1000
+},
+{
+    "id": 3,
+    "title": "Lelah Manambola",
+    "artist": "Big mj",
+    "upVotes": 0,
+    "downVotes": 0,
+    "isFavorite": false,
+    "lyrics": "",
+    "style": "Be miray",
+    "price": 1000
+},
+{
+    "id": 4,
+    "title": "",
+    "artist": "",
+    "upVotes": 0,
+    "downVotes": 0,
+    "isFavorite": false,
+    "lyrics": "",
+    "style": "",
+    "price": 1000
+},
+{
+    "id": 5,
+    "title": "",
+    "artist": "",
+    "upVotes": 0,
+    "downVotes": 0,
+    "isFavorite": false,
+    "lyrics": "",
+    "style": "",
+    "price": 1000
+}]
