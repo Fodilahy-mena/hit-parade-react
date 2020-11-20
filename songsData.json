@@ -2,55 +2,55 @@
     "id": 1,
     "title": "AYA",
     "artist": "Shyn",
-    "upVotes": 0,
-    "downVotes": 0,
+    "upVotes": 180,
+    "downVotes": 20,
     "isFavorite": false,
     "lyrics": "",
     "style": "Reggae",
-    "price": 1000
+    "price": 12000
 
 },
 {
     "id": 2,
     "title": "400 Volt",
     "artist": "Wawa",
-    "upVotes": 0,
-    "downVotes": 0,
+    "upVotes": 36,
+    "downVotes": 7,
     "isFavorite": false,
     "lyrics": "",
     "style": "Salegy",
-    "price": 1000
+    "price": 19000
 },
 {
     "id": 3,
-    "title": "Lelah Manambola",
-    "artist": "Big mj",
-    "upVotes": 0,
-    "downVotes": 0,
+    "title": "Doubles jeux",
+    "artist": "Jazz mmc",
+    "upVotes": 89,
+    "downVotes": 50,
     "isFavorite": false,
     "lyrics": "",
-    "style": "Be miray",
-    "price": 1000
+    "style": "Waza",
+    "price": 20000
 },
 {
     "id": 4,
-    "title": "",
-    "artist": "",
-    "upVotes": 0,
-    "downVotes": 0,
+    "title": "Avy masiaka",
+    "artist": "Black Nadia",
+    "upVotes": 30,
+    "downVotes": 9,
     "isFavorite": false,
     "lyrics": "",
-    "style": "",
-    "price": 1000
+    "style": "Others",
+    "price": 15000
 },
 {
     "id": 5,
-    "title": "",
-    "artist": "",
-    "upVotes": 0,
+    "title": "Mbola Bio",
+    "artist": "Denise",
+    "upVotes": 10,
     "downVotes": 0,
     "isFavorite": false,
     "lyrics": "",
-    "style": "",
-    "price": 1000
+    "style": "R&B",
+    "price": 30000
 }]

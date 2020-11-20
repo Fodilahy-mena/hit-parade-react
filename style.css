@@ -1,0 +1,142 @@
+header {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+}
+#root > div {
+    max-width: 80%;
+    min-width: 80%;
+    margin: auto;
+}
+
+.song {
+    display: grid;
+    grid-template-columns: .5fr 1fr 1fr auto;
+    gap: 16px;
+    margin-bottom: 16px;
+    padding: 16px;
+    color: white;
+    background-color: black;
+}
+.song h2 {
+    margin: 0;
+}
+.song_favorite > i {
+    font-size: 1.2rem;
+    position: relative;
+    top: 10px;
+    cursor: pointer;
+    color: #FFD803;
+}
+.song_votes {
+    display: flex;
+}
+
+.song_interest {
+    display: flex;
+}
+.song_votes span, .song_votes button {
+    font-size: 1.2rem;
+    position: relative;
+    top: 10px
+}
+.song_votes span {
+    width: fit-content;
+    height: max-content;
+}
+.song_votes button {
+    width: fit-content;
+    height: max-content;
+    border: none;
+    background: none;
+    color: white;
+    outline: none;
+}
+.song_votes button > i {
+    font-size: 1.2rem;
+	position: relative;
+	/* cursor: pointer; */
+}
+.song_votes i {
+    cursor: pointer;
+}
+.votes_down, .votes_up {
+    display: flex;
+    justify-content: space-between;
+}
+.votes_up {
+    margin-right: 16px;
+}
+.song_interest i {
+    font-size: 1.2rem;
+    position: relative;
+    top: 10px;
+    cursor: pointer;
+    color: #BAE8E8;
+}
+.song_interest i:nth-of-type(1) {
+    margin-right: 16px;
+    /* color: #FFD803; */
+}
+
+
+/* Cart styles */
+
+.cart_item {
+    display: grid;
+    grid-template-columns: .5fr 1fr auto;
+    gap: 16px;
+    margin-bottom: 16px;
+    padding: 16px;
+    color: white;
+    background-color: black;
+}
+.cart_item h2 {
+    margin: 0;
+}
+.cart_item > p {
+    color:  #FFD803;
+}
+.item_delete > i {
+    font-size: 1.2rem;
+    position: relative;
+    top: 10px;
+    cursor: pointer;
+    color: #BAE8E8;
+}
+
+.buy_btn {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 64px;
+    line-height: 78px;
+    /* identical to box height */
+    color: #000000;
+
+    cursor: pointer;
+    border: none;
+    max-width: fit-content;
+    min-width: fit-content;
+    height: fit-content;
+    /* padding: 20px; */
+    padding-inline-start: 40px;
+    padding-inline-end: 40px;
+    background: #FFD803;
+    outline: none;
+}
+.costs {
+    display: flex;
+    justify-content: space-between;
+}
+.costs > p {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 59px;
+    margin: 0;
+    /* identical to box height */
+}
+.costs strong {
+    color: #BAE8E8;
+}
