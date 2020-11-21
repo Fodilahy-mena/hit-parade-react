@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import {Context} from '../Context';
+import {Link} from 'react-router-dom'
 
 function Song({song}) {
     const {toggleFavorite, 
@@ -45,7 +46,9 @@ function Song({song}) {
             </div>
             <div className="song_interest">
                 {cartIcon()}
-                <i className="ri-more-fill"></i>
+                <Link className="link__to-lyrics" key={song.id} to={`/song/${song.id}`}>
+                    <i className="ri-more-fill"></i>
+                </Link>
             </div>
         </div>
     )

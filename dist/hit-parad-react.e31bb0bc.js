@@ -33861,7 +33861,7 @@ module.exports = [{
   "upVotes": 180,
   "downVotes": 20,
   "isFavorite": false,
-  "lyrics": "",
+  "lyrics": "aya aya aya",
   "style": "Reggae",
   "price": 12000
 }, {
@@ -33871,7 +33871,7 @@ module.exports = [{
   "upVotes": 36,
   "downVotes": 7,
   "isFavorite": false,
-  "lyrics": "",
+  "lyrics": "Mpembemp pemp mpempe",
   "style": "Salegy",
   "price": 19000
 }, {
@@ -33881,7 +33881,7 @@ module.exports = [{
   "upVotes": 89,
   "downVotes": 50,
   "isFavorite": false,
-  "lyrics": "",
+  "lyrics": "Double jeux tsy haiko jzz mmc koa",
   "style": "Waza",
   "price": 20000
 }, {
@@ -33891,19 +33891,29 @@ module.exports = [{
   "upVotes": 30,
   "downVotes": 9,
   "isFavorite": false,
-  "lyrics": "",
+  "lyrics": "Avy masiaka e nana black nadia",
   "style": "Others",
   "price": 15000
 }, {
   "id": 5,
-  "title": "Mbola Bio",
+  "title": "Bio",
   "artist": "Denise",
   "upVotes": 10,
   "downVotes": 0,
   "isFavorite": false,
-  "lyrics": "",
+  "lyrics": "Mbola bio nanan denise",
   "style": "R&B",
   "price": 30000
+}, {
+  "id": 6,
+  "title": "Lelah manambola",
+  "artist": "Big Mj",
+  "upVotes": 60,
+  "downVotes": 2,
+  "isFavorite": false,
+  "lyrics": "Fomban'ireo lelah misy vola mampijaly vady",
+  "style": "Others",
+  "price": 17500
 }];
 },{}],"Context.js":[function(require,module,exports) {
 "use strict";
@@ -34064,6 +34074,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _Context = require("../Context");
 
+var _reactRouterDom = require("react-router-dom");
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -34133,14 +34145,18 @@ function Song(_ref) {
     className: "ri-arrow-down-line"
   })))), /*#__PURE__*/_react.default.createElement("div", {
     className: "song_interest"
-  }, cartIcon(), /*#__PURE__*/_react.default.createElement("i", {
+  }, cartIcon(), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    className: "link__to-lyrics",
+    key: song.id,
+    to: "/song/".concat(song.id)
+  }, /*#__PURE__*/_react.default.createElement("i", {
     className: "ri-more-fill"
-  })));
+  }))));
 }
 
 var _default = Song;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../Context":"Context.js"}],"pages/Songs.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Context":"Context.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"pages/Songs.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34215,16 +34231,20 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _reactRouterDom = require("react-router-dom");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Style = function Style(_ref) {
+function Style(_ref) {
   var song = _ref.song;
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "\uD83C\uDFA7  ", song.style));
-};
+  return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: "styles/".concat(song.style)
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "\uD83C\uDFA7  ", song.style)));
+}
 
 var _default = Style;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"pages/Styles.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"pages/Styles.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34244,11 +34264,32 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 var Styles = function Styles() {
   var _useContext = (0, _react.useContext)(_Context.Context),
-      allSongs = _useContext.allSongs;
+      allSongs = _useContext.allSongs; //Remove duplicates from an array of objects in JavaScript
 
-  return /*#__PURE__*/_react.default.createElement("div", null, allSongs.map(function (song) {
+
+  function getUniqueListBy(allSongs, key) {
+    return _toConsumableArray(new Map(allSongs.map(function (song) {
+      return [song[key], song];
+    })).values());
+  }
+
+  var filtereSongStyle = getUniqueListBy(allSongs, 'style');
+  console.log("filteredStyles", filtereSongStyle);
+  return /*#__PURE__*/_react.default.createElement("div", null, filtereSongStyle.map(function (song) {
     return /*#__PURE__*/_react.default.createElement(_Style.default, {
       key: song.id,
       song: song
@@ -34370,7 +34411,111 @@ var Cart = function Cart() {
 
 var _default = Cart;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../components/CartItem":"components/CartItem.js","../Context":"Context.js"}],"App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../components/CartItem":"components/CartItem.js","../Context":"Context.js"}],"pages/StyleName.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _Context = require("../Context");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function StyleName() {
+  var _useContext = (0, _react.useContext)(_Context.Context),
+      allSongs = _useContext.allSongs;
+
+  var _useParams = (0, _reactRouterDom.useParams)(),
+      styleName = _useParams.styleName;
+
+  var thisSong = allSongs.filter(function (song) {
+    return song.style === styleName;
+  });
+
+  function getUniqueListBy(thisSong, key) {
+    return _toConsumableArray(new Map(thisSong.map(function (song) {
+      return [song[key], song];
+    })).values());
+  }
+
+  var songStyle = getUniqueListBy(thisSong, 'style');
+  console.log("filteredStyle", songStyle);
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, songStyle.map(function (song) {
+    return /*#__PURE__*/_react.default.createElement("h1", {
+      key: song.id
+    }, song.style);
+  }), thisSong.map(function (song) {
+    return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+      className: "link__to-lyrics",
+      key: song.id,
+      to: "/song/".concat(song.id)
+    }, /*#__PURE__*/_react.default.createElement("div", {
+      key: song.id
+    }, /*#__PURE__*/_react.default.createElement("h2", null, song.title), /*#__PURE__*/_react.default.createElement("span", null, song.artist)));
+  }));
+}
+
+var _default = StyleName;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js"}],"pages/SongLyrics.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _Context = require("../Context");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function SongLyrics() {
+  var _useContext = (0, _react.useContext)(_Context.Context),
+      allSongs = _useContext.allSongs;
+
+  var _useParams = (0, _reactRouterDom.useParams)(),
+      songId = _useParams.songId;
+
+  var thisSong = allSongs.filter(function (song) {
+    return song.id === Number(songId);
+  });
+  console.log("found song", thisSong);
+  return thisSong.map(function (song) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: song.id
+    }, /*#__PURE__*/_react.default.createElement("h3", null, song.artist), /*#__PURE__*/_react.default.createElement("p", null, song.lyrics));
+  });
+}
+
+var _default = SongLyrics;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34384,17 +34529,19 @@ var _reactRouterDom = require("react-router-dom");
 
 var _Songs = _interopRequireDefault(require("./pages/Songs"));
 
-var _songsData = _interopRequireDefault(require("./songsData.json"));
-
 var _Header = _interopRequireDefault(require("./components/Header"));
 
 var _Styles = _interopRequireDefault(require("./pages/Styles"));
 
 var _Cart = _interopRequireDefault(require("./pages/Cart"));
 
+var _StyleName = _interopRequireDefault(require("./pages/StyleName"));
+
+var _SongLyrics = _interopRequireDefault(require("./pages/SongLyrics"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var App = function App() {
+function App() {
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Hit Parade"), /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
     path: "/"
@@ -34403,12 +34550,16 @@ var App = function App() {
     path: "/styles"
   }, /*#__PURE__*/_react.default.createElement(_Styles.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     path: "/cart"
-  }, /*#__PURE__*/_react.default.createElement(_Cart.default, null))));
-};
+  }, /*#__PURE__*/_react.default.createElement(_Cart.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    path: "/styles/:styleName"
+  }, /*#__PURE__*/_react.default.createElement(_StyleName.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    path: "/song/:songId"
+  }, /*#__PURE__*/_react.default.createElement(_SongLyrics.default, null))));
+}
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./pages/Songs":"pages/Songs.js","./songsData.json":"songsData.json","./components/Header":"components/Header.js","./pages/Styles":"pages/Styles.js","./pages/Cart":"pages/Cart.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./pages/Songs":"pages/Songs.js","./components/Header":"components/Header.js","./pages/Styles":"pages/Styles.js","./pages/Cart":"pages/Cart.js","./pages/StyleName":"pages/StyleName.js","./pages/SongLyrics":"pages/SongLyrics.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -34452,7 +34603,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50834" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49663" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

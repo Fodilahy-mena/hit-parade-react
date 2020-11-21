@@ -141,4 +141,8 @@ header {
     color: #BAE8E8;
 }
 
+.link__to-lyrics {
+    text-decoration: none;
+}
+
 /*# sourceMappingURL=/style.e308ff8e.css.map */

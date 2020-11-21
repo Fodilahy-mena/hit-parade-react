@@ -1,13 +1,15 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Router} from 'react-router-dom'
 import Songs from './pages/Songs';
-import songsData from './songsData.json';
 import Header from './components/Header';
 import Styles from './pages/Styles'
 import Cart from './pages/Cart';
+import StyleName from './pages/StyleName';
+import SongLyrics from './pages/SongLyrics';
 
 
-const App = () => {
+
+function App() {
     return (
         <div>
             <h1>Hit Parade</h1>
@@ -17,13 +19,20 @@ const App = () => {
 				<Route exact path="/">
                     <Songs/>
 				</Route>
+                
                 <Route exact path="/styles">
                     <Styles/>
 				</Route>
-				<Route path="/cart">
+                <Route path="/cart">
 					<Cart/>
 				</Route>
-				
+
+                <Route path="/styles/:styleName">
+                    <StyleName/>
+				</Route>
+                <Route path="/song/:songId">
+                    <SongLyrics/>
+                </Route>
 			</Switch>
             
         </div>

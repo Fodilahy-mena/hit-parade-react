@@ -5,7 +5,7 @@
     "upVotes": 180,
     "downVotes": 20,
     "isFavorite": false,
-    "lyrics": "",
+    "lyrics": "aya aya aya",
     "style": "Reggae",
     "price": 12000
 
@@ -17,7 +17,7 @@
     "upVotes": 36,
     "downVotes": 7,
     "isFavorite": false,
-    "lyrics": "",
+    "lyrics": "Mpembemp pemp mpempe",
     "style": "Salegy",
     "price": 19000
 },
@@ -28,7 +28,7 @@
     "upVotes": 89,
     "downVotes": 50,
     "isFavorite": false,
-    "lyrics": "",
+    "lyrics": "Double jeux tsy haiko jzz mmc koa",
     "style": "Waza",
     "price": 20000
 },
@@ -39,18 +39,28 @@
     "upVotes": 30,
     "downVotes": 9,
     "isFavorite": false,
-    "lyrics": "",
+    "lyrics": "Avy masiaka e nana black nadia",
     "style": "Others",
     "price": 15000
 },
 {
     "id": 5,
-    "title": "Mbola Bio",
+    "title": "Bio",
     "artist": "Denise",
     "upVotes": 10,
     "downVotes": 0,
     "isFavorite": false,
-    "lyrics": "",
+    "lyrics": "Mbola bio nanan denise",
     "style": "R&B",
     "price": 30000
+},{
+    "id": 6,
+    "title": "Lelah manambola",
+    "artist": "Big Mj",
+    "upVotes": 60,
+    "downVotes": 2,
+    "isFavorite": false,
+    "lyrics": "Fomban'ireo lelah misy vola mampijaly vady",
+    "style": "Others",
+    "price": 17500
 }]

@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom';
 
-const Style = ({song}) => {
+function Style({song}) {
     return (
-        <div>
-            {/* <i className="ri-customer-service-fill"></i> */}
-            <p>🎧  {song.style}</p>
-        </div>
+        
+        <Link to={`styles/${song.style}`}>
+            <div>
+                {/* <i className="ri-customer-service-fill"></i> */}
+                <p>🎧  {song.style}</p>
+            </div>
+        </Link>
     )
 }
 
