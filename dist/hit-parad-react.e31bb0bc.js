@@ -33934,6 +33934,12 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -33941,12 +33947,6 @@ function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread n
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -33973,11 +33973,94 @@ function ContextProvider(props) {
   var _useState3 = (0, _react.useState)([]),
       _useState4 = _slicedToArray(_useState3, 2),
       cartItems = _useState4[0],
-      setCartItems = _useState4[1];
+      setCartItems = _useState4[1]; ///
+
+
+  var _useState5 = (0, _react.useState)(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      titleInput = _useState6[0],
+      setTitleInput = _useState6[1];
+
+  var _useState7 = (0, _react.useState)(''),
+      _useState8 = _slicedToArray(_useState7, 2),
+      artistInput = _useState8[0],
+      setArtistInput = _useState8[1];
+
+  var _useState9 = (0, _react.useState)(''),
+      _useState10 = _slicedToArray(_useState9, 2),
+      styleInput = _useState10[0],
+      setStyleInput = _useState10[1];
+
+  var _useState11 = (0, _react.useState)(''),
+      _useState12 = _slicedToArray(_useState11, 2),
+      lyricsInput = _useState12[0],
+      setLyricsInput = _useState12[1];
+
+  var _useState13 = (0, _react.useState)(0),
+      _useState14 = _slicedToArray(_useState13, 2),
+      priceInput = _useState14[0],
+      setPriceInput = _useState14[1]; // const [songs, setSongs] = useState([])
+
 
   (0, _react.useEffect)(function () {
     setAllSongs(_songsData.default);
-  }, []); // updating isFavorite when clicked
+  }, []);
+
+  var addNewSong = function addNewSong() {
+    setAllSongs([].concat(_toConsumableArray(allSongs), [{
+      artist: artistInput,
+      style: styleInput,
+      id: Date.now(),
+      title: titleInput,
+      upVotes: 0,
+      downVotes: 0,
+      isFavorite: false,
+      lyrics: lyricsInput,
+      price: Number(priceInput)
+    }]));
+  };
+
+  var handleChangeTitle = function handleChangeTitle(e) {
+    e.preventDefault();
+    setTitleInput(e.target.value);
+  };
+
+  var handleChangeArtist = function handleChangeArtist(e) {
+    e.preventDefault();
+    setArtistInput(e.target.value);
+  };
+
+  var handleChangePrice = function handleChangePrice(e) {
+    e.preventDefault();
+    setPriceInput(e.target.value);
+  };
+
+  var handleChangeStyle = function handleChangeStyle(e) {
+    e.preventDefault();
+    setStyleInput(e.target.value);
+  };
+
+  var handleChangeLyrics = function handleChangeLyrics(e) {
+    e.preventDefault();
+    setLyricsInput(e.target.value);
+  };
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    if (titleInput === '') return;
+    if (artistInput === '') return;
+    if (styleInput === '') return;
+    if (lyricsInput === '') return;
+    addNewSong();
+    setTitleInput('');
+    setArtistInput('');
+    setPriceInput(0);
+    setStyleInput('');
+    setLyricsInput('');
+    console.log(allSongs);
+  }; // console.log("newsongs",songs)
+  // updating isFavorite when clicked
+
 
   function toggleFavorite(id) {
     var newSongsArray = allSongs.map(function (song) {
@@ -34058,7 +34141,18 @@ function ContextProvider(props) {
       addSongToCart: addSongToCart,
       cartItems: cartItems,
       removeSongFromCart: removeSongFromCart,
-      boughtCart: boughtCart
+      boughtCart: boughtCart,
+      handleChangeTitle: handleChangeTitle,
+      titleInput: titleInput,
+      handleChangeArtist: handleChangeArtist,
+      artistInput: artistInput,
+      handleChangePrice: handleChangePrice,
+      priceInput: priceInput,
+      handleChangeStyle: handleChangeStyle,
+      styleInput: styleInput,
+      handleChangeLyrics: handleChangeLyrics,
+      lyricsInput: lyricsInput,
+      handleSubmit: handleSubmit
     }
   }, props.children);
 }
@@ -34201,13 +34295,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Context = require("../Context");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function Header() {
+  var _useContext = (0, _react.useContext)(_Context.Context),
+      cartItems = _useContext.cartItems;
+
+  console.log("crt itm", cartItems);
   return /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/"
   }, /*#__PURE__*/_react.default.createElement("h2", null, "\uD83D\uDD25 Popular songs")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
@@ -34216,12 +34318,16 @@ function Header() {
     to: "/add"
   }, /*#__PURE__*/_react.default.createElement("h2", null, "\uD83E\uDD28 Add")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/cart"
-  }, /*#__PURE__*/_react.default.createElement("h2", null, "\uD83D\uDC5C Cart")));
+  }, /*#__PURE__*/_react.default.createElement("h2", null, " ", cartItems.length > 0 ? /*#__PURE__*/_react.default.createElement("i", {
+    className: "ri-shopping-cart-fill cartheadfill"
+  }) : /*#__PURE__*/_react.default.createElement("i", {
+    className: "ri-shopping-cart-line cartheadnull"
+  }), " Cart")));
 }
 
 var _default = Header;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"components/Style.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js"}],"components/Style.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34289,7 +34395,9 @@ var Styles = function Styles() {
 
   var filtereSongStyle = getUniqueListBy(allSongs, 'style');
   console.log("filteredStyles", filtereSongStyle);
-  return /*#__PURE__*/_react.default.createElement("div", null, filtereSongStyle.map(function (song) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "styles"
+  }, filtereSongStyle.map(function (song) {
     return /*#__PURE__*/_react.default.createElement(_Style.default, {
       key: song.id,
       song: song
@@ -34401,10 +34509,10 @@ var Cart = function Cart() {
     className: "main"
   }, itemElements, /*#__PURE__*/_react.default.createElement("div", {
     className: "costs"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, cartItems.length > 0 ? /*#__PURE__*/_react.default.createElement("button", {
     className: "buy_btn",
     onClick: handleBuy
-  }, buyBtnText), /*#__PURE__*/_react.default.createElement("p", {
+  }, buyBtnText) : /*#__PURE__*/_react.default.createElement("p", null, "You have no items in your cart! \u26A0"), /*#__PURE__*/_react.default.createElement("p", {
     className: "total-cost"
   }, /*#__PURE__*/_react.default.createElement("strong", null, "Total:"), " ", "".concat(totalCosts, " Ar"))));
 };
@@ -34461,15 +34569,17 @@ function StyleName() {
   var songStyle = getUniqueListBy(thisSong, 'style');
   console.log("filteredStyle", songStyle);
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, songStyle.map(function (song) {
-    return /*#__PURE__*/_react.default.createElement("h1", {
+    return /*#__PURE__*/_react.default.createElement("h3", {
+      className: "individualStyle",
       key: song.id
-    }, song.style);
+    }, "\uD83C\uDFA7 ", song.style);
   }), thisSong.map(function (song) {
     return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
       className: "link__to-lyrics",
       key: song.id,
       to: "/song/".concat(song.id)
     }, /*#__PURE__*/_react.default.createElement("div", {
+      className: "song_from_style",
       key: song.id
     }, /*#__PURE__*/_react.default.createElement("h2", null, song.title), /*#__PURE__*/_react.default.createElement("span", null, song.artist)));
   }));
@@ -34509,13 +34619,129 @@ function SongLyrics() {
   return thisSong.map(function (song) {
     return /*#__PURE__*/_react.default.createElement("div", {
       key: song.id
-    }, /*#__PURE__*/_react.default.createElement("h3", null, song.artist), /*#__PURE__*/_react.default.createElement("p", null, song.lyrics));
+    }, /*#__PURE__*/_react.default.createElement("h3", {
+      className: "lyrics_owner"
+    }, song.artist), /*#__PURE__*/_react.default.createElement("div", {
+      className: "lyrics"
+    }, /*#__PURE__*/_react.default.createElement("p", null, song.lyrics)));
   });
 }
 
 var _default = SongLyrics;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js"}],"App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js"}],"pages/Add.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Context = require("../Context");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function Add() {
+  var _useContext = (0, _react.useContext)(_Context.Context),
+      handleChangeTitle = _useContext.handleChangeTitle,
+      titleInput = _useContext.titleInput,
+      handleChangeArtist = _useContext.handleChangeArtist,
+      artistInput = _useContext.artistInput,
+      handleChangePrice = _useContext.handleChangePrice,
+      priceInput = _useContext.priceInput,
+      handleChangeStyle = _useContext.handleChangeStyle,
+      styleInput = _useContext.styleInput,
+      handleChangeLyrics = _useContext.handleChangeLyrics,
+      lyricsInput = _useContext.lyricsInput,
+      handleSubmit = _useContext.handleSubmit;
+
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: handleSubmit
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    className: "input",
+    type: "text",
+    name: "title",
+    value: titleInput,
+    onChange: handleChangeTitle,
+    placeholder: "Title",
+    required: true
+  }), /*#__PURE__*/_react.default.createElement("input", {
+    className: "input",
+    type: "text",
+    name: "artist",
+    value: artistInput,
+    onChange: handleChangeArtist,
+    placeholder: "Artist",
+    required: true
+  }), /*#__PURE__*/_react.default.createElement("input", {
+    className: "input",
+    type: "number",
+    name: "price",
+    value: priceInput,
+    onChange: handleChangePrice,
+    placeholder: "Price",
+    required: true
+  }), /*#__PURE__*/_react.default.createElement("select", {
+    className: "input",
+    type: "text",
+    name: "style",
+    value: styleInput,
+    onChange: handleChangeStyle,
+    placeholder: "Style",
+    required: true
+  }, /*#__PURE__*/_react.default.createElement("option", {
+    value: ""
+  }, "Style"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Bassessa"
+  }, "Bassessa"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Country"
+  }, "Country"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Hip Pop"
+  }, "Hip Pop"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Jazz"
+  }, "Jazz"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Kaoitry"
+  }, "Kaoitry"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Regbae"
+  }, "Reggae"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Rock"
+  }, "Rock"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "R&B"
+  }, "R&B"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Soul"
+  }, "Soul"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Salegy"
+  }, "Salegy"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Tsapiky"
+  }, "Tsapiky"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Wassa"
+  }, "Wassa"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Waza"
+  }, "Waza"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Others"
+  }, "Others")), /*#__PURE__*/_react.default.createElement("textarea", {
+    className: "input",
+    type: "text",
+    name: "lyrics",
+    value: lyricsInput,
+    onChange: handleChangeLyrics,
+    placeholder: "Lyrics",
+    required: true,
+    rows: "10",
+    cols: "40"
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    className: "add_btn",
+    type: "submit"
+  }, "Add")));
+}
+
+var _default = Add;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","../Context":"Context.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34539,6 +34765,8 @@ var _StyleName = _interopRequireDefault(require("./pages/StyleName"));
 
 var _SongLyrics = _interopRequireDefault(require("./pages/SongLyrics"));
 
+var _Add = _interopRequireDefault(require("./pages/Add"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
@@ -34549,6 +34777,8 @@ function App() {
     exact: true,
     path: "/styles"
   }, /*#__PURE__*/_react.default.createElement(_Styles.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    path: "/add"
+  }, /*#__PURE__*/_react.default.createElement(_Add.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     path: "/cart"
   }, /*#__PURE__*/_react.default.createElement(_Cart.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     path: "/styles/:styleName"
@@ -34559,7 +34789,7 @@ function App() {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./pages/Songs":"pages/Songs.js","./components/Header":"components/Header.js","./pages/Styles":"pages/Styles.js","./pages/Cart":"pages/Cart.js","./pages/StyleName":"pages/StyleName.js","./pages/SongLyrics":"pages/SongLyrics.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./pages/Songs":"pages/Songs.js","./components/Header":"components/Header.js","./pages/Styles":"pages/Styles.js","./pages/Cart":"pages/Cart.js","./pages/StyleName":"pages/StyleName.js","./pages/SongLyrics":"pages/SongLyrics.js","./pages/Add":"pages/Add.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

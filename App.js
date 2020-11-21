@@ -6,6 +6,7 @@ import Styles from './pages/Styles'
 import Cart from './pages/Cart';
 import StyleName from './pages/StyleName';
 import SongLyrics from './pages/SongLyrics';
+import Add from './pages/Add';
 
 
 
@@ -23,6 +24,11 @@ function App() {
                 <Route exact path="/styles">
                     <Styles/>
 				</Route>
+
+                <Route path="/add">
+					<Add/>
+				</Route>
+
                 <Route path="/cart">
 					<Cart/>
 				</Route>

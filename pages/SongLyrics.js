@@ -13,8 +13,10 @@ function SongLyrics() {
     return (
         thisSong.map(song => (
         <div key={song.id}>
-            <h3>{song.artist}</h3>
-            <p>{song.lyrics}</p>
+            <h3 className="lyrics_owner">{song.artist}</h3>
+            <div className="lyrics">
+                <p>{song.lyrics}</p>
+            </div>
         </div>
         ))
     )

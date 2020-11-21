@@ -30,7 +30,10 @@ const Cart = () => {
         <main className="main">
 			{itemElements}
             <div className="costs">
+                {cartItems.length > 0 ? 
                 <button className="buy_btn" onClick={handleBuy}>{buyBtnText}</button>
+                :
+                <p>You have no items in your cart! ⚠</p>}
                 <p className="total-cost"><strong>Total:</strong> {`${totalCosts} Ar`}</p>
 			
             </div>

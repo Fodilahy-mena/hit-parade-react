@@ -1,6 +1,37 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+}
+#root > div > h1 {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 72px;
+    line-height: 88px;
+    /* identical to box height */
+    color: #272343;
+}
 header {
-    display: grid;
-    grid-template-columns: repeat(4, auto);
+    display: flex;
+    /* grid-template-columns: repeat(4, auto); */
+    justify-content: space-between;
+}
+header a {
+    /* font-size: 36px; */
+    /* line-height: 44px; */
+    /* identical to box height */
+    text-decoration: none;
+    color: #272343;
+
+}
+.cartheadnull {
+    color: #BAE8E8;
+}
+.cartheadfill {
+    color: #FFD803;
 }
 #root > div {
     max-width: 80%;
@@ -104,7 +135,7 @@ header {
     color: #BAE8E8;
 }
 
-.buy_btn {
+.buy_btn, .add_btn {
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
@@ -143,6 +174,60 @@ header {
 
 .link__to-lyrics {
     text-decoration: none;
+}
+
+.input {
+    background: #BAE8E8;
+    border-radius: 5px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 44px;
+    /* identical to box height */
+    width: 100%;
+    /* min-width: 200px; */
+    /* padding-right: .5rem; */
+    border: none;
+    cursor: pointer;
+    color: #000000;
+    outline: none;
+    margin-bottom: 1rem;
+}
+
+.styles a {
+    text-decoration: none;
+    font-size: 24px;
+    line-height: 38px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.lyrics {
+    background: #272343;
+    border-radius: 5px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    max-width: 40%;
+    min-width: auto;
+    padding: 50px;
+}
+.lyrics_owner, .individualStyle {
+    font-size: 64px;
+    color: #000000;
+
+}
+.song_from_style {
+    background: #272343;
+    border-radius: 5px;
+    color: #FFFFFE;
+    padding: 30px;
+    max-width: 60%;
+    margin-bottom: 16px;
 }
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */

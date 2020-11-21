@@ -2,13 +2,75 @@ import React, {useState, useEffect} from 'react'
 import songsData from './songsData.json';
 
 const Context = React.createContext();
+
 function ContextProvider(props) {
+
     const [allSongs, setAllSongs] = useState([]);
     const [cartItems, setCartItems] = useState([]);
-    
+    ///
+    const [titleInput, setTitleInput] = useState('');
+    const [artistInput, setArtistInput] = useState('');
+    const [styleInput, setStyleInput] = useState('');
+    const [lyricsInput, setLyricsInput] = useState('');
+    const [priceInput, setPriceInput] = useState(0);
+    // const [songs, setSongs] = useState([])
+
     useEffect(() => {
         setAllSongs(songsData);
     }, []);
+    
+    const addNewSong = () => {
+        setAllSongs([
+            ...allSongs,
+            {
+                artist: artistInput,
+                style: styleInput,
+                id: Date.now(),
+                title: titleInput,
+                upVotes: 0,
+                downVotes: 0,
+                isFavorite: false,
+                lyrics: lyricsInput,
+                price: Number(priceInput),
+            }
+        ]);
+    };
+    const handleChangeTitle = (e) => {
+        e.preventDefault();
+        setTitleInput(e.target.value)
+    }
+    const handleChangeArtist = (e) => {
+        e.preventDefault();
+        setArtistInput(e.target.value)
+    }
+    const handleChangePrice = (e) => {
+        e.preventDefault();
+        setPriceInput(e.target.value)
+    }
+    const handleChangeStyle = (e) => {
+        e.preventDefault();
+        setStyleInput(e.target.value)
+    }
+    const handleChangeLyrics = (e) => {
+        e.preventDefault();
+        setLyricsInput(e.target.value)
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(titleInput === '') return;
+        if(artistInput === '') return;
+        if(styleInput === '') return; 
+        if(lyricsInput === '') return;
+        addNewSong();
+        setTitleInput('');
+        setArtistInput('');
+        setPriceInput(0);
+        setStyleInput('');
+        setLyricsInput('')
+        console.log(allSongs);
+        
+    }
+    // console.log("newsongs",songs)
 
     // updating isFavorite when clicked
     function toggleFavorite(id) {
@@ -83,7 +145,18 @@ function ContextProvider(props) {
         addSongToCart, 
         cartItems,
         removeSongFromCart,
-        boughtCart}}>
+        boughtCart, 
+        handleChangeTitle,
+        titleInput, 
+        handleChangeArtist, 
+        artistInput,
+        handleChangePrice,
+        priceInput,
+        handleChangeStyle,
+        styleInput,
+        handleChangeLyrics,
+        lyricsInput,
+        handleSubmit}}>
                 {props.children}
             </Context.Provider>
 }

@@ -13,7 +13,7 @@ const Styles = () => {
     const filtereSongStyle = getUniqueListBy(allSongs, 'style')
     console.log("filteredStyles",filtereSongStyle)
     return (
-        <div>
+        <div className="styles">
             {filtereSongStyle.map(song => (
 				<Style key={song.id} song={song}/>
 			))}
