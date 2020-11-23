@@ -13,10 +13,13 @@ function SongLyrics() {
     return (
         thisSong.map(song => (
         <div key={song.id}>
-            <h3 className="lyrics_owner">{song.artist}</h3>
+            <i style={{fontSize: "20px",color: "blue", position: "relative", top: "2rem", cursor: "pointer", alignItems: "center"}} className="ri-arrow-left-line" onClick={() => history.back()}>Go Back</i>
+            <h3 className="lyrics_owner">{song.title}: {song.artist}</h3>
             <div className="lyrics">
+                <h3>Lyrics</h3>
                 <p>{song.lyrics}</p>
             </div>
+            
         </div>
         ))
     )

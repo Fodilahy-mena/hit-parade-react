@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route, Router} from 'react-router-dom'
+import {Switch, Route, Link} from 'react-router-dom'
 import Songs from './pages/Songs';
 import Header from './components/Header';
 import Styles from './pages/Styles'
@@ -13,7 +13,10 @@ import Add from './pages/Add';
 function App() {
     return (
         <div>
-            <h1>Hit Parade</h1>
+            <Link to="/">
+                <h1>Hit Parade</h1>
+			</Link>
+            
             <Header />
 			
 			<Switch>

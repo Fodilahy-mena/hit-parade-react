@@ -1,11 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,bold&display=swap');
 body {
     margin: 0;
     padding: 0;
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
+    background-color: #f2f7f5;
 }
-#root > div > h1 {
+#root > div > a {
+    text-decoration: none;
+}
+#root > div > a > h1 {
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
@@ -27,38 +32,47 @@ header a {
     color: #272343;
 
 }
+header h2 {
+    font-weight: 400;
+}
+header h2:hover {
+    font-weight: bold;
+}
 .cartheadnull {
     color: #BAE8E8;
 }
 .cartheadfill {
     color: #FFD803;
 }
-#root > div {
-    max-width: 80%;
-    min-width: 80%;
+#root > div , footer{
+    max-width: 95%;
+    min-width: 95%;
     margin: auto;
 }
 
+
 .song {
-    display: grid;
-    grid-template-columns: .5fr 1fr 1fr auto;
-    margin-bottom: 16px;
-    padding: 40px;
+    display: flex;
+    /* grid-template-columns: .5fr 1fr 1fr auto; */
+    justify-content: space-between;
+    margin-bottom: 42px;
+    padding: 32px;
     color: white;
     background-color: black;
+    border-radius: 5px;
+    align-items: center;
 }
 .song h2 {
     margin: 0;
-    font-size: 36px;
+    /* font-size: 36px; */
+    font-weight: normal;
     line-height: 44px;
 }
 .song span {
     font-size: 18px;
     line-height: 22px;
 }
-.song_favorite {
-    margin: auto;
-}
+
 .song_favorite > i {
     font-size: 1.2rem;
     position: relative;
@@ -67,13 +81,16 @@ header a {
 }
 .song_votes {
     display: flex;
-    margin: auto;
+    align-items: center;
+}
+.song_votes span {
+    color: #BAE8E8;
 }
 
 .song_interest {
     display: flex;
     justify-content: space-between;
-    margin: auto;
+    align-items: center;
 }
 
 .song_votes span, .song_votes button {
@@ -96,7 +113,10 @@ header a {
 .song_votes button > i {
     font-size: 1.2rem;
 	position: relative;
-	/* cursor: pointer; */
+	
+}
+.song_votes button > i:hover {
+    color: #FFD803;
 }
 .song_votes i {
     cursor: pointer;
@@ -105,8 +125,11 @@ header a {
     display: flex;
     justify-content: space-between;
 }
-.votes_up {
-    /* margin-right: 16px; */
+#total_votes {
+    position: relative;
+    top: 21px;
+    right: 8px;
+    color: #FFD803;
 }
 .song_interest i {
     font-size: 1.2rem;
@@ -114,6 +137,9 @@ header a {
     /* top: 10px; */
     cursor: pointer;
     color: #BAE8E8;
+}
+.song_interest i:hover {
+    color: #FFD803;
 }
 .song_interest i:nth-of-type(1) {
     margin-right: 16px;
@@ -128,12 +154,14 @@ header a {
     grid-template-columns: .5fr 1fr auto;
     gap: 16px;
     margin-bottom: 16px;
-    padding: 16px;
+    padding: 32px;
     color: white;
     background-color: black;
+    border-radius: 5px;
 }
 .cart_item h2 {
     margin: 0;
+    font-weight: 400;
 }
 .cart_item > p {
     color:  #FFD803;
@@ -186,23 +214,26 @@ header a {
 .link__to-lyrics {
     text-decoration: none;
 }
-
+form {
+    display: flex;
+    flex-direction: column;
+}
 .input {
     background: #BAE8E8;
     border-radius: 5px;
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
-    font-size: 36px;
-    line-height: 44px;
-    /* identical to box height */
-    width: 100%;
-    /* min-width: 200px; */
-    /* padding-right: .5rem; */
+    font-size: 20px;
+    
     border: none;
     cursor: pointer;
     color: #000000;
     outline: none;
+    padding-block-start: 15px;
+    padding-block-end: 15px;
+    padding-inline-start: 19px;
+    padding-inline-end: 19px;
     margin-bottom: 1rem;
 }
 
@@ -227,10 +258,14 @@ header a {
     min-width: auto;
     padding: 50px;
 }
+.styles a:hover {
+    color: #FFD803;
+}
+
 .lyrics_owner, .individualStyle {
     font-size: 64px;
     color: #000000;
-
+    font-weight: 400;
 }
 .song_from_style {
     background: #272343;
@@ -238,9 +273,20 @@ header a {
     color: #FFFFFE;
     padding: 30px;
     max-width: 60%;
-    margin-bottom: 16px;
+    margin-bottom: 42px;
 }
 
 .song_interest .filledCart, .filledAddCart  {
     color:  #FFD803;
+}
+footer {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+@media (min-width: 679px) {
+    #root > div, footer {
+    max-width: 60%;
+    min-width: 60%;
+    }
 }

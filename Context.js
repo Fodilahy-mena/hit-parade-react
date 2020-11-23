@@ -7,77 +7,44 @@ function ContextProvider(props) {
 
     const [allSongs, setAllSongs] = useState([]);
     const [cartItems, setCartItems] = useState([]);
-    ///
-    const [titleInput, setTitleInput] = useState('');
-    const [artistInput, setArtistInput] = useState('');
-    const [styleInput, setStyleInput] = useState('');
-    const [lyricsInput, setLyricsInput] = useState('');
-    const [priceInput, setPriceInput] = useState(0);
-    // const [songs, setSongs] = useState([])
+    
+    useEffect(() => {
+        initCartItems();
+    }, [])
+    useEffect(() => {
+        const lsAllSongs = JSON.parse(localStorage.getItem('allSongs'));
+        if(lsAllSongs) {
+            setAllSongs(lsAllSongs)
+        } else {
+        setAllSongs(songsData);
+        }
+    }, []);
 
     useEffect(() => {
-        setAllSongs(songsData);
-    }, []);
+        if(allSongs.length > 0) {
+            localStorage.setItem('allSongs', JSON.stringify(allSongs));
+        }
+        
+    }, [allSongs])
+
+    function initCartItems() {
+        const lsCartItems = JSON.parse(localStorage.getItem('cartItems'));
+        if(lsCartItems) {
+            setCartItems(lsCartItems)
+        }
+    }
+
+    useEffect(() => {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }, [cartItems])
     
-    const addNewSong = () => {
-        setAllSongs([
-            ...allSongs,
-            {
-                artist: artistInput,
-                style: styleInput,
-                id: Date.now(),
-                title: titleInput,
-                upVotes: 0,
-                downVotes: 0,
-                isFavorite: false,
-                lyrics: lyricsInput,
-                price: Number(priceInput),
-            }
-        ]);
-    };
     function sortSong(songA, songB) {
 		const rateSongA = songA.upVotes - songA.downVotes;
 		const rateSongB = songB.upVotes - songB.downVotes;
 		return rateSongB - rateSongA;
     }
     allSongs.sort(sortSong);
-    const handleChangeTitle = (e) => {
-        e.preventDefault();
-        setTitleInput(e.target.value)
-    }
-    const handleChangeArtist = (e) => {
-        e.preventDefault();
-        setArtistInput(e.target.value)
-    }
-    const handleChangePrice = (e) => {
-        e.preventDefault();
-        setPriceInput(e.target.value)
-    }
-    const handleChangeStyle = (e) => {
-        e.preventDefault();
-        setStyleInput(e.target.value)
-    }
-    const handleChangeLyrics = (e) => {
-        e.preventDefault();
-        setLyricsInput(e.target.value)
-    }
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if(titleInput === '') return;
-        if(artistInput === '') return;
-        if(styleInput === '') return; 
-        if(lyricsInput === '') return;
-        addNewSong();
-        setTitleInput('');
-        setArtistInput('');
-        setPriceInput(0);
-        setStyleInput('');
-        setLyricsInput('')
-        console.log(allSongs);
-        
-    }
-    // console.log("newsongs",songs)
-
+    
     // updating isFavorite when clicked
     function toggleFavorite(id) {
         const newSongsArray = allSongs.map(song => {
@@ -152,17 +119,8 @@ function ContextProvider(props) {
         cartItems,
         removeSongFromCart,
         boughtCart, 
-        handleChangeTitle,
-        titleInput, 
-        handleChangeArtist, 
-        artistInput,
-        handleChangePrice,
-        priceInput,
-        handleChangeStyle,
-        styleInput,
-        handleChangeLyrics,
-        lyricsInput,
-        handleSubmit}}>
+        setAllSongs
+        }}>
                 {props.children}
             </Context.Provider>
 }

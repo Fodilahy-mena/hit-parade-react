@@ -36,7 +36,7 @@ function Song({song}) {
                         <i className="ri-arrow-up-line"></i>
                     </button>
                 </div>
-                
+               <span id="total_votes">{song.upVotes - song.downVotes}</span>
                 <div className="votes_down">
                     <span>{song.downVotes}</span>
                     <button onClick={() => toggleDownVotes(song.id)}>
