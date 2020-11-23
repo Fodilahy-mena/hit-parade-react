@@ -33858,7 +33858,7 @@ module.exports = [{
   "id": 1,
   "title": "AYA",
   "artist": "Shyn",
-  "upVotes": 180,
+  "upVotes": 85,
   "downVotes": 20,
   "isFavorite": false,
   "lyrics": "aya aya aya",
@@ -33878,8 +33878,8 @@ module.exports = [{
   "id": 3,
   "title": "Doubles jeux",
   "artist": "Jazz mmc",
-  "upVotes": 89,
-  "downVotes": 50,
+  "upVotes": 69,
+  "downVotes": 20,
   "isFavorite": false,
   "lyrics": "Double jeux tsy haiko jzz mmc koa",
   "style": "Waza",
@@ -34019,6 +34019,14 @@ function ContextProvider(props) {
       price: Number(priceInput)
     }]));
   };
+
+  function sortSong(songA, songB) {
+    var rateSongA = songA.upVotes - songA.downVotes;
+    var rateSongB = songB.upVotes - songB.downVotes;
+    return rateSongB - rateSongA;
+  }
+
+  allSongs.sort(sortSong);
 
   var handleChangeTitle = function handleChangeTitle(e) {
     e.preventDefault();
@@ -34193,7 +34201,7 @@ function Song(_ref) {
         onClick: function onClick() {
           return removeSongFromCart(song.id);
         },
-        className: "ri-shopping-cart-2-fill"
+        className: "ri-shopping-cart-2-fill filledCart"
       });
     } else {
       return /*#__PURE__*/_react.default.createElement("i", {
@@ -34316,7 +34324,9 @@ function Header() {
     to: "/styles"
   }, /*#__PURE__*/_react.default.createElement("h2", null, "\uD83D\uDC9D Styles")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/add"
-  }, /*#__PURE__*/_react.default.createElement("h2", null, "\uD83E\uDD28 Add")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+  }, /*#__PURE__*/_react.default.createElement("h2", null, /*#__PURE__*/_react.default.createElement("i", {
+    className: "ri-add-box-fill filledAddCart"
+  }), " Add")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/cart"
   }, /*#__PURE__*/_react.default.createElement("h2", null, " ", cartItems.length > 0 ? /*#__PURE__*/_react.default.createElement("i", {
     className: "ri-shopping-cart-fill cartheadfill"
@@ -34833,7 +34843,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49663" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61135" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -42,33 +42,44 @@ header a {
 .song {
     display: grid;
     grid-template-columns: .5fr 1fr 1fr auto;
-    gap: 16px;
     margin-bottom: 16px;
-    padding: 16px;
+    padding: 40px;
     color: white;
     background-color: black;
 }
 .song h2 {
     margin: 0;
+    font-size: 36px;
+    line-height: 44px;
+}
+.song span {
+    font-size: 18px;
+    line-height: 22px;
+}
+.song_favorite {
+    margin: auto;
 }
 .song_favorite > i {
     font-size: 1.2rem;
     position: relative;
-    top: 10px;
     cursor: pointer;
     color: #FFD803;
 }
 .song_votes {
     display: flex;
+    margin: auto;
 }
 
 .song_interest {
     display: flex;
+    justify-content: space-between;
+    margin: auto;
 }
+
 .song_votes span, .song_votes button {
     font-size: 1.2rem;
     position: relative;
-    top: 10px
+    /* top: 10px */
 }
 .song_votes span {
     width: fit-content;
@@ -95,18 +106,18 @@ header a {
     justify-content: space-between;
 }
 .votes_up {
-    margin-right: 16px;
+    /* margin-right: 16px; */
 }
 .song_interest i {
     font-size: 1.2rem;
     position: relative;
-    top: 10px;
+    /* top: 10px; */
     cursor: pointer;
     color: #BAE8E8;
 }
 .song_interest i:nth-of-type(1) {
     margin-right: 16px;
-    /* color: #FFD803; */
+
 }
 
 
@@ -228,4 +239,8 @@ header a {
     padding: 30px;
     max-width: 60%;
     margin-bottom: 16px;
+}
+
+.song_interest .filledCart, .filledAddCart  {
+    color:  #FFD803;
 }

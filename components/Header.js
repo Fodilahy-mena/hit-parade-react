@@ -14,7 +14,7 @@ function Header() {
 				<h2>💝 Styles</h2>
 			</Link>
             <Link to="/add">
-				<h2>🤨 Add</h2>
+				<h2><i className="ri-add-box-fill filledAddCart"></i> Add</h2>
 			</Link>
 			<Link to="/cart">
                 <h2> {cartItems.length > 0 ? <i className="ri-shopping-cart-fill cartheadfill"></i> : <i className="ri-shopping-cart-line cartheadnull"></i>} Cart</h2>

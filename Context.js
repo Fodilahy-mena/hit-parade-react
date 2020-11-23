@@ -35,6 +35,12 @@ function ContextProvider(props) {
             }
         ]);
     };
+    function sortSong(songA, songB) {
+		const rateSongA = songA.upVotes - songA.downVotes;
+		const rateSongB = songB.upVotes - songB.downVotes;
+		return rateSongB - rateSongA;
+    }
+    allSongs.sort(sortSong);
     const handleChangeTitle = (e) => {
         e.preventDefault();
         setTitleInput(e.target.value)

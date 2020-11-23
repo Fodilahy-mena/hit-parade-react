@@ -12,7 +12,7 @@ function Song({song}) {
 
         function cartIcon() {
             if(cartItems.some(cartItem => cartItem.id === song.id)) {
-                return (<i onClick={() => removeSongFromCart(song.id)} className="ri-shopping-cart-2-fill"></i>)
+                return (<i onClick={() => removeSongFromCart(song.id)} className="ri-shopping-cart-2-fill filledCart"></i>)
             } else {
                return (<i onClick={() => addSongToCart(song)} className="ri-shopping-cart-2-line"></i>)
             }
