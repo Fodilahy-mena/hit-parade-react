@@ -174,7 +174,7 @@ header h2:hover {
     color: #BAE8E8;
 }
 
-.buy_btn, .add_btn {
+ .add_btn {
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
@@ -198,18 +198,8 @@ header h2:hover {
     display: flex;
     justify-content: space-between;
 }
-.costs > p {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 48px;
-    line-height: 59px;
-    margin: 0;
-    /* identical to box height */
-}
-.costs strong {
-    color: #BAE8E8;
-}
+
+
 
 .link__to-lyrics {
     text-decoration: none;

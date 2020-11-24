@@ -1,4 +1,27 @@
 import React, {useContext, useState} from 'react'
+import Styled from 'styled-components';
+
+const AddBtnStyle = Styled.button`
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 78px;
+    color: #000000;
+
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    height: fit-content;
+    padding-inline-start: 40px;
+    padding-inline-end: 40px;
+    max-width: fit-content;
+    min-width: fit-content;
+    height: fit-content;
+    background: #FFD803;
+    outline: none;
+
+`;
 import { Context } from '../Context';
 function Add() {
     const {allSongs, setAllSongs}= useContext(Context);
@@ -66,7 +89,7 @@ function Add() {
                     <option value="Others">Others</option>
                 </select> 
                 <textarea className="input" type="text" name="lyrics" value={lyrics} onChange={(e) => setLyricsInput(e.target.value)} placeholder="Lyrics" required rows="5" cols="40"/>
-                <button className="add_btn" type="submit">Add</button>
+                <AddBtnStyle type="submit">Add</AddBtnStyle>
             </form>
         </div>
     )
